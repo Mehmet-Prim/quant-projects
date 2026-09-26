@@ -8,4 +8,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install -r requirements.txt
-      - run: pytest -q
+      - name: Run each project's tests in its own root
+        run: |
+          set -e
+          for d in 0*/; do echo "== $d"; (cd "$d" && python -m pytest -q -p no:cacheprovider); done
