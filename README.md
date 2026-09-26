@@ -22,7 +22,7 @@ Fünf Grundlagenprojekte der quantitativen Finanzmathematik, gebaut während des
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-pytest
+for d in 0*/; do (cd "$d" && python -m pytest -q); done
 ```
 
 ## Lizenz
